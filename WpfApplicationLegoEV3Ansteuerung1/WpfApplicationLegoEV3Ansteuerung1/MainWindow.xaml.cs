@@ -34,11 +34,13 @@ namespace WpfApplicationLegoEV3Ansteuerung1
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             Dispatcher.UnhandledException += InitFehler.ExceptionCatcher;
-
             aAction = new Action(Hallo);
             aTask = new Task(aAction);
 
@@ -52,14 +54,17 @@ namespace WpfApplicationLegoEV3Ansteuerung1
             comboBoxComPort1.Items.Insert(6, "Com7");
             comboBoxComPort1.Items.Insert(7, "Com8");
             comboBoxComPort1.Items.Insert(8, "Com9");
-
             comboBoxComPort1.SelectedIndex = 0;
-
             gridBottom1.Visibility = Visibility.Hidden;
         }
 
 
 
+        /// <summary>
+        /// Verbindet mit dem Lego Brink, nach auswählen der Verbindung
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonVerbinden_Click(object sender, RoutedEventArgs e)
         {
             ComboBoxItem aComboBoxItem = comboBoxCommunication1.SelectedItem as ComboBoxItem;
@@ -77,7 +82,7 @@ namespace WpfApplicationLegoEV3Ansteuerung1
             try
             {
                 aTask = brick.ConnectAsync();
-                lblStatusBarMessage1.Text = aTask.Status.ToString();        
+                lblStatusBarMessage1.Text = aTask.Status.ToString();      
                 
                 if (aTask.Status != TaskStatus.Faulted )
                 {
@@ -91,6 +96,12 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void brick_BrickChanged(object sender, BrickChangedEventArgs e)
         {
             textBoxReturns.Text = "-----------------------------------------------------------------------" + Environment.NewLine + textBoxReturns.Text;
@@ -99,7 +110,6 @@ namespace WpfApplicationLegoEV3Ansteuerung1
             textBoxReturns.Text = "Sensorwert 3 (Three):  " + brick.Ports[InputPort.Three].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
             textBoxReturns.Text = "Sensorwert 4 (Four) :  " + brick.Ports[InputPort.Four].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
         }
-
 
 
 
@@ -140,20 +150,28 @@ namespace WpfApplicationLegoEV3Ansteuerung1
             MessageBox.Show(aTask.Status.ToString());
         }
 
+
+
         private void buttonGoA_Click(object sender, RoutedEventArgs e)
         {
             brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.A, Convert.ToInt32(sliderSpeedA.Value), Convert.ToUInt32(sliderSteppsA.Value), true);
         }
+
+
 
         private void buttonGoB_Click(object sender, RoutedEventArgs e)
         {
             brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.B, Convert.ToInt32(sliderSpeedB.Value), Convert.ToUInt32(sliderSteppsB.Value), true);
         }
 
+
+
         private void buttonGoC_Click(object sender, RoutedEventArgs e)
         {
             brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.C, Convert.ToInt32(sliderSpeedC.Value), Convert.ToUInt32(sliderSteppsC.Value), true);
         }
+
+
 
         private void buttonGoD_Click(object sender, RoutedEventArgs e)
         {
@@ -161,6 +179,12 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonStop_Click(object sender, RoutedEventArgs e)
         {
             brick.DirectCommand.StopMotorAsync(OutputPort.A, true);
@@ -169,6 +193,13 @@ namespace WpfApplicationLegoEV3Ansteuerung1
             brick.DirectCommand.StopMotorAsync(OutputPort.D, true);
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="aLabel"></param>
+        /// <param name="aSlider"></param>
         private void handleSlider(Label aLabel, Slider aSlider)
         {
             if (aSlider != null & aLabel != null)

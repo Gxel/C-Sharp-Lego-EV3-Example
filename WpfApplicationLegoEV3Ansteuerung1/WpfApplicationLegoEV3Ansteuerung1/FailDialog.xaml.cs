@@ -46,13 +46,16 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         private Exception FException;
         private string FErrorFilename;
 
-
         public FailDialog()
         {
             InitializeComponent();
         }
 
 
+        /// <summary>
+        /// Dialog der bei Fehlern aufpopt
+        /// </summary>
+        /// <param name="paramException"></param>
         public FailDialog( Exception paramException)
         {
             InitializeComponent();
@@ -68,7 +71,10 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         }
 
 
-
+        /// <summary>
+        /// Die Option ein Screenshot vom Fehler zu erstellen
+        /// </summary>
+        /// <returns></returns>
         public string MakeScreenShot()
         {
             string filename = String.Empty;
@@ -102,7 +108,11 @@ namespace WpfApplicationLegoEV3Ansteuerung1
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
