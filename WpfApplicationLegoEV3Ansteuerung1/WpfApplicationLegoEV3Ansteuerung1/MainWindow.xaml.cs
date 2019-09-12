@@ -104,11 +104,11 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         /// <param name="e"></param>
         private void brick_BrickChanged(object sender, BrickChangedEventArgs e)
         {
-            textBoxReturns.Text = "-----------------------------------------------------------------------" + Environment.NewLine + textBoxReturns.Text;
-            textBoxReturns.Text = "Sensorwert 1 (One)  :  " + brick.Ports[InputPort.One].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
-            textBoxReturns.Text = "Sensorwert 2 (Two)  :  " + brick.Ports[InputPort.Two].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
-            textBoxReturns.Text = "Sensorwert 3 (Three):  " + brick.Ports[InputPort.Three].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
-            textBoxReturns.Text = "Sensorwert 4 (Four) :  " + brick.Ports[InputPort.Four].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
+            textBoxReturns.Text  = "-----------------------------------------------------------------------" + Environment.NewLine + textBoxReturns.Text;
+            textBoxReturns.Text += "Sensorwert 1 (One)  :  " + brick.Ports[InputPort.One].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
+            textBoxReturns.Text += "Sensorwert 2 (Two)  :  " + brick.Ports[InputPort.Two].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
+            textBoxReturns.Text += "Sensorwert 3 (Three):  " + brick.Ports[InputPort.Three].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
+            textBoxReturns.Text += "Sensorwert 4 (Four) :  " + brick.Ports[InputPort.Four].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
         }
 
 
@@ -154,28 +154,56 @@ namespace WpfApplicationLegoEV3Ansteuerung1
 
         private void buttonGoA_Click(object sender, RoutedEventArgs e)
         {
-            brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.A, Convert.ToInt32(sliderSpeedA.Value), Convert.ToUInt32(sliderSteppsA.Value), true);
+            try
+            {
+                brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.A, Convert.ToInt32(sliderSpeedA.Value), Convert.ToUInt32(sliderSteppsA.Value), true);
+            }            
+            catch (Exception ex)
+            {
+                lblStatusBarMessage1.Text = "Exception: " + ex.Message ;
+            }
         }
 
 
 
         private void buttonGoB_Click(object sender, RoutedEventArgs e)
         {
-            brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.B, Convert.ToInt32(sliderSpeedB.Value), Convert.ToUInt32(sliderSteppsB.Value), true);
+            try
+            { 
+                brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.B, Convert.ToInt32(sliderSpeedB.Value), Convert.ToUInt32(sliderSteppsB.Value), true);
+            }
+            catch (Exception ex)
+            {
+                lblStatusBarMessage1.Text = "Exception: " + ex.Message;
+            }
         }
 
 
 
         private void buttonGoC_Click(object sender, RoutedEventArgs e)
         {
-            brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.C, Convert.ToInt32(sliderSpeedC.Value), Convert.ToUInt32(sliderSteppsC.Value), true);
-        }
+            try
+            {
+                brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.C, Convert.ToInt32(sliderSpeedC.Value), Convert.ToUInt32(sliderSteppsC.Value), true);
+            }            
+            catch (Exception ex)
+            {
+                lblStatusBarMessage1.Text = "Exception: " + ex.Message ;
+            }
+}
 
 
 
         private void buttonGoD_Click(object sender, RoutedEventArgs e)
         {
-            brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.D, Convert.ToInt32(sliderSpeedD.Value), Convert.ToUInt32(sliderSteppsD.Value), true);
+            try
+            {
+                brick.DirectCommand.StepMotorAtSpeedAsync(OutputPort.D, Convert.ToInt32(sliderSpeedD.Value), Convert.ToUInt32(sliderSteppsD.Value), true);
+            }
+            catch (Exception ex)
+            {
+                lblStatusBarMessage1.Text = "Exception: " + ex.Message;
+            }
         }
 
 
@@ -255,7 +283,7 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         private void buttonSensor1_Click(object sender, RoutedEventArgs e)
         {
             BrickChangedEventArgs aBrickChangedEventArgs = new BrickChangedEventArgs();
-            textBoxReturns.Text = "Sensorwert 1 (One):  " +brick.Ports[InputPort.One].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
+            textBoxReturns.Text = "Sensorwert 1 (One):  " + brick.Ports[InputPort.One].SIValue.ToString() + Environment.NewLine + textBoxReturns.Text;
         }
 
         private void buttonSensor2_Click(object sender, RoutedEventArgs e)
