@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Lego.Ev3.Core;
 using Lego.Ev3.Desktop;
 
@@ -119,7 +109,11 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBoxCommunication1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxComPort1 != null)
@@ -137,21 +131,33 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonTrennen_Click(object sender, RoutedEventArgs e)
         {
             brick.Disconnect();
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonStatus1_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(aTask.Status.ToString());
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGoA_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -165,7 +171,11 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGoB_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -179,7 +189,11 @@ namespace WpfApplicationLegoEV3Ansteuerung1
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGoC_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -193,7 +207,11 @@ namespace WpfApplicationLegoEV3Ansteuerung1
 }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGoD_Click(object sender, RoutedEventArgs e)
         {
             try

@@ -19,8 +19,6 @@ using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.Drawing;
-using System.Windows.Media;
-using System.Globalization;
 using System.Net.Mail;
 
 namespace WpfApplicationLegoEV3Ansteuerung1
